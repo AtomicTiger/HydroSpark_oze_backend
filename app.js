@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 // Connection URI
-const uri = 'mongodb://localhost:27017/myDatabase';
+const uri = 'mongodb://localhost:27017/myDatabase'; //link to db
 
 // Connect to MongoDB using Mongoose
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
