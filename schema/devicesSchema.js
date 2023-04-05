@@ -1,13 +1,11 @@
-import { Int32 } from 'mongodb';
-import mongoose from 'mongoose';
+const { Int32 } = require('mongodb');
+const mongoose =  require('mongoose');
 const { Schema } = mongoose;
 
-const devicesSchema = new Schema({
-  _id: Schema.Types.UUID, // String is shorthand for {type: String}
+const devicesSchema = new mongoose.Schema({
   name: String,
-  userID: Int32,
-  power: Float32Array,
-
+  userID: String,
+  power: Number,
 });
 
-export default devicesSchema;
+module.exports = devicesSchema;
