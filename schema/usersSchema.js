@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-  _id: Schema.Types .UUID, // String is shorthand for {type: String}
+  email: String,
   name: String,
-
+  password:String
 });
 
 module.exports = userSchema;
