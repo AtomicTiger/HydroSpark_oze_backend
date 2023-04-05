@@ -1,12 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const devicesRouter = require('./routs/devices');
+const register = require('./routs/registraion');
+
 
 
 const app = express();
 const port = 3000;
 
-app.use(devicesRouter)
+app.use(devicesRouter);
+
+app.use(register);
 
 app.get('/', (req,res) => {
     res.send('hello hydrospark squad')

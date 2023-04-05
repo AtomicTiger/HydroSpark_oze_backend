@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Device = require('../schema/devicesSchema');
+const User = require('../schema/usersSchema');
 const app = express();
 
 
@@ -12,13 +12,17 @@ async function main() {
   // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
 }
 
-const dev = mongoose.model('Device', Device);
-// API endpoint for adding a new device to the "devices" collection
-app.get('/devices',async (req, res) => {
+const userAcc = mongoose.model('User', User);
+
+app.post('/register',async (req, res) => {
   try {
-    const newDevice = new dev({name: "Hydrospark", userID: null, power: 0})
-    console.log(newDevice);
-    await newDevice.save()
+    const newUser = new userAcc({
+        email: req.body.email,
+        name: req.body.name,
+        password: req.body.password
+    })
+    console.log(newUser);
+    await newUser.save()
     res.redirect('/success')    
   } catch (err) {
     console.error('Failed to add device to MongoDB:', err);
