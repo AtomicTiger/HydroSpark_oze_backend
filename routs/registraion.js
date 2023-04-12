@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const User = require('../schema/usersSchema');
 const app = express();
+const bcrypt = require('bcrypt');
 
 
 main().catch(err => console.log(err));
@@ -19,10 +20,14 @@ app.post('/register',async (req, res) => {
     let emailVar = req.body.email;
     let nameVar = req.body.name;
     let passwordVar = req.body.password;
+    // generate salt
+    const salt = await bcrypt.genSalt(10);
+    // hash the password
+    const hashedPassword = await bcrypt.hash(passwordVar, salt);
     const newUser = new userAcc({
       email: emailVar,
       name: nameVar,
-      password: passwordVar
+      password: hashedPassword
 
     })
     console.log(newUser);
