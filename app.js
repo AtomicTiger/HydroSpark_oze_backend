@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const devicesRouter = require('./routs/devices');
 const register = require('./routs/registraion');
+const login = require('./routs/login');
 const bodyParser = require('body-parser');
 
 
@@ -19,6 +20,8 @@ app.use(bodyParser.json());
 app.use(devicesRouter);
 
 app.use(register);
+
+app.use(login);
 
 app.get('/', (req,res) => {
     res.send('hello hydrospark squad')
