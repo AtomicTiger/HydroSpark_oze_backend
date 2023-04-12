@@ -4,7 +4,7 @@ const devicesRouter = require('./routs/devices');
 const register = require('./routs/registraion');
 const login = require('./routs/login');
 const bodyParser = require('body-parser');
-
+const changename = require('./routs/namechange')
 
 
 const app = express();
@@ -22,6 +22,8 @@ app.use(devicesRouter);
 app.use(register);
 
 app.use(login);
+
+app.use(changename);
 
 app.get('/', (req,res) => {
     res.send('hello hydrospark squad')
