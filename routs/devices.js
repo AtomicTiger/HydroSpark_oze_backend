@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Device = require('../schema/devicesSchema');
-const { Db } = require('mongodb');
 const app = express();
 
 
