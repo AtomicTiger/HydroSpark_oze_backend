@@ -16,7 +16,7 @@ const dev = mongoose.model('Device', Device);
 // API endpoint for adding a new device to the "devices" collection
 app.get('/devices',async (req, res) => {
   try {
-    const newDevice = new dev({name: "Hydrospark", userID: null, power: 0})
+    const newDevice = new dev({name: "Hydrospark", userID: null, power: 0, powerDaily: 0, powerMonthly: 0})
     console.log(newDevice);
     await newDevice.save()
     res.redirect('/success')    

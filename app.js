@@ -6,6 +6,7 @@ const login = require('./routs/login');
 const bodyParser = require('body-parser');
 const changename = require('./routs/namechange');
 const createuserdevice = require('./routs/createuserdevice');
+const addpower = require('./routs/addpowertodevice')
 
 
 const app = express();
@@ -27,6 +28,8 @@ app.use(login);
 app.use(changename);
 
 app.use(createuserdevice);
+
+app.use(addpower);
 
 app.get('/', (req,res) => {
     res.send('hello hydrospark squad')
