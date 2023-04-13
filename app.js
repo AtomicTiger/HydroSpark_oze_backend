@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const changename = require('./routs/namechange');
 const createuserdevice = require('./routs/createuserdevice');
 const addpower = require('./routs/addpowertodevice')
-
+const {saveDeviceDataDaily, saveDeviceDataMonthly}  = require('./routs/savetoarchive');
 
 const app = express();
 const port = 3000;
@@ -42,3 +42,9 @@ app.get('/success', (req, res) => {
 app.listen(port, ()=>{
     console.log(`server s on on port ${port}`)
 })
+
+//24 houres
+setInterval(saveDeviceDataDaily, 24 * 60 * 60 * 1000);
+
+//30 days
+setInterval(saveDeviceDataMonthly, 30 * 24 * 60 * 60 * 1000);

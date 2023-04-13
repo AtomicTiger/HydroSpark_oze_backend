@@ -1,7 +1,7 @@
 const mongoose =  require('mongoose');
 const { Schema } = mongoose;
 
-const devicesSchema = new mongoose.Schema({
+const archiveSchema = new mongoose.Schema({
     deviceID: String,
     userID: String,
     powerDaily: {
@@ -14,4 +14,4 @@ const devicesSchema = new mongoose.Schema({
     }
 });
 
-module.exports = devicesSchema;
+module.exports = archiveSchema;
