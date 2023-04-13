@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Device = require('../schema/devicesSchema');
-const Archive = require('../schema/archiveSchema');
+const Archive = require('../schema/archiveScheam');
 
 async function saveDeviceDataDaily() {
   try {

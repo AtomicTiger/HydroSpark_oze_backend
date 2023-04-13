@@ -8,6 +8,7 @@ const changename = require('./routs/namechange');
 const createuserdevice = require('./routs/createuserdevice');
 const addpower = require('./routs/addpowertodevice')
 const {saveDeviceDataDaily, saveDeviceDataMonthly}  = require('./routs/savetoarchive');
+const getDevices = require('./routs/getuserdevices')
 
 const app = express();
 const port = 3000;
@@ -31,6 +32,8 @@ app.use(createuserdevice);
 
 app.use(addpower);
 
+app.use(getDevices);
+
 app.get('/', (req,res) => {
     res.send('hello hydrospark squad')
 })
@@ -43,8 +46,9 @@ app.listen(port, ()=>{
     console.log(`server s on on port ${port}`)
 })
 
-//24 houres
-setInterval(saveDeviceDataDaily, 24 * 60 * 60 * 1000);
 
-//30 days
-setInterval(saveDeviceDataMonthly, 30 * 24 * 60 * 60 * 1000);
+// //24 houres
+// setInterval(saveDeviceDataDaily, 24 * 60 * 60 * 1000);
+
+// //30 days
+// setInterval(saveDeviceDataMonthly, 30 * 24 * 60 * 60 * 1000);
