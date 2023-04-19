@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 const devicesSchema = new mongoose.Schema({
   name: String,
   userID: String,
+  dateOfProduction: Date,
   power:{
     type: Number, 
     default: 0

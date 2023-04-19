@@ -9,6 +9,7 @@ const createuserdevice = require('./routs/createuserdevice');
 const addpower = require('./routs/addpowertodevice')
 const {saveDeviceDataDaily, saveDeviceDataMonthly}  = require('./routs/savetoarchive');
 const getDevices = require('./routs/getuserdevices')
+const getdevicesinfo = require('./routs/returndataoutdevices');
 
 const app = express();
 const port = 3000;
@@ -33,6 +34,8 @@ app.use(createuserdevice);
 app.use(addpower);
 
 app.use(getDevices);
+
+app.use(getdevicesinfo);
 
 app.get('/', (req,res) => {
     res.send('hello hydrospark squad')
