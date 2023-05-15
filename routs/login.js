@@ -28,7 +28,7 @@ app.post('/login', async (req, res) => {
       }
   
       // if user exists and passwords match
-      res.send('You are in ');
+      res.status(200).send(user["_id"]);
     } catch (err) {
       console.error('Failed to login:', err);
       res.status(500).json({ error: 'Failed to login' });
