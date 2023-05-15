@@ -11,6 +11,7 @@ const {saveDeviceDataDaily, saveDeviceDataMonthly}  = require('./routs/savetoarc
 const getDevices = require('./routs/getuserdevices')
 const getdevicesinfo = require('./routs/returndataoutdevices');
 const cors = require('cors');
+const dbString = require('./routs/dbdata')
 
 const app = express();
 const port = 3000;
@@ -23,41 +24,31 @@ app.use(cors({
     allowedHeaders: 'Content-Type, Authorization'
 }));
 
-// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
-
-// parse application/json
 app.use(bodyParser.json());
 
-
-app.use(devicesRouter);
-
-app.use(register);
-
-app.use(login);
-
-app.use(changename);
-
-app.use(createuserdevice);
-
-app.use(addpower);
-
-app.use(getDevices);
-
-app.use(getdevicesinfo);
-
-
-app.get('/', (req,res) => {
-    res.send('hello hydrospark squad')
-})
-
-app.get('/success', (req, res) => {
-    res.send('Object created successfully!');
-});
-
-app.listen(port, ()=>{
-    console.log(`server s on on port ${port}`)
-})
+mongoose.connect(dbString, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log('Connected to the database');
+    app.listen(port, () => {
+        console.log('Server is running on port 3000');
+    
+        app.use(devicesRouter);
+        app.use(register);
+        app.use(login);
+        app.use(changename);
+        app.use(createuserdevice);
+        app.use(addpower);
+        app.use(getDevices);
+        app.use(getdevicesinfo);
+    });
+  })
+  .catch((error) => {
+    console.error('Failed to connect to the database:', error);
+  });
 
 
 // //24 houres

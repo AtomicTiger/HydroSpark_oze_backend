@@ -5,14 +5,6 @@ const bcrypt = require('bcrypt');
 const app = express();
 
 
-main().catch(err => console.log(err));
-
-async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/Hydrospark');
- 
-  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
-}
-
 const userAcc = mongoose.model('User', User);
 
 app.post('/login', async (req, res) => {

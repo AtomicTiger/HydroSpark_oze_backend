@@ -2,16 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Device = require('../schema/devicesSchema');
+const dbstring = require('./dbdata');
 const app = express();
 
 // Use the body-parser middleware to parse request bodies
 app.use(bodyParser.json());
-
-main().catch(err => console.log(err));
-
-async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/Hydrospark');
-}
 
 const dev = mongoose.model('Device', Device);
 
