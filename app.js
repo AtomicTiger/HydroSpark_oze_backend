@@ -10,9 +10,18 @@ const addpower = require('./routs/addpowertodevice')
 const {saveDeviceDataDaily, saveDeviceDataMonthly}  = require('./routs/savetoarchive');
 const getDevices = require('./routs/getuserdevices')
 const getdevicesinfo = require('./routs/returndataoutdevices');
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
+
+app.use(cors());
+
+app.use(cors({
+    origin: 'http://localhost:3001',
+    optionsSuccessStatus: 200,
+    allowedHeaders: 'Content-Type, Authorization'
+}));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -36,6 +45,7 @@ app.use(addpower);
 app.use(getDevices);
 
 app.use(getdevicesinfo);
+
 
 app.get('/', (req,res) => {
     res.send('hello hydrospark squad')

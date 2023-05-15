@@ -18,7 +18,7 @@ const userAcc = mongoose.model('User', User);
 app.post('/register',async (req, res) => {
   try {
     let emailVar = req.body.email;
-    let nameVar = req.body.name;
+    let reppasswordVar = req.body.reppassword;
     let passwordVar = req.body.password;
     // generate salt
     const salt = await bcrypt.genSalt(10);
@@ -26,13 +26,14 @@ app.post('/register',async (req, res) => {
     const hashedPassword = await bcrypt.hash(passwordVar, salt);
     const newUser = new userAcc({
       email: emailVar,
-      name: nameVar,
       password: hashedPassword
-
     })
     console.log(newUser);
-    await newUser.save()
-    res.redirect('/success')    
+    if(reppasswordVar == passwordVar){
+      await newUser.save()
+    }else{
+      res.redirect('localhost:3001/login?');
+    }   
   } catch (err) {
     console.error('Failed to add user:', err);
     res.status(500).json({ error: 'Failed to add device to MongoDB' });
