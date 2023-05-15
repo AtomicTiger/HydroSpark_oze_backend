@@ -29,10 +29,11 @@ app.post('/register', async (req, res) => {
 
     console.log(newUser);
 
-    if (reppasswordVar == passwordVar) {
+    if (reppasswordVar != passwordVar) {
+      res.status(400).json({ error: 'Password is missmatching' });
+    }else{
       await newUser.save();
-    } else {
-      res.redirect('localhost:3001/login?');
+      res.status(200).json({ error: 'you are in' });
     }
   } catch (err) {
     console.error('Failed to add user:', err);
