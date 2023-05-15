@@ -10,6 +10,7 @@ const addpower = require('./routs/addpowertodevice')
 const {saveDeviceDataDaily, saveDeviceDataMonthly}  = require('./routs/savetoarchive');
 const getDevices = require('./routs/getuserdevices')
 const getdevicesinfo = require('./routs/returndataoutdevices');
+const getUserInfo = require('./routs/getuserdata');
 const cors = require('cors');
 const dbString = require('./routs/dbdata')
 
@@ -44,6 +45,7 @@ mongoose.connect(dbString, {
         app.use(addpower);
         app.use(getDevices);
         app.use(getdevicesinfo);
+        app.use(getUserInfo);
     });
   })
   .catch((error) => {
