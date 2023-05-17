@@ -20,7 +20,7 @@ const port = 3000;
 app.use(cors());
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://hydrospark.onrender.com/',
     optionsSuccessStatus: 200,
     allowedHeaders: 'Content-Type, Authorization'
 }));
