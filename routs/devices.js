@@ -8,7 +8,7 @@ const app = express();
 
 const dev = mongoose.model('Device', Device);
 // API endpoint for adding a new device to the "devices" collection
-app.get('/devices',async (req, res) => {
+app.post('/devices',async (req, res) => {
   try {
     const newDevice = new dev({name: "Hydrospark", userID: null, dateOfProduction: new Date(),power: 0, powerDaily: 0, powerMonthly: 0})
     console.log(newDevice);
