@@ -1,3 +1,4 @@
+const { Double } = require('mongodb');
 const mongoose =  require('mongoose');
 const { Schema } = mongoose;
 
@@ -6,15 +7,15 @@ const devicesSchema = new mongoose.Schema({
   userID: String,
   dateOfProduction: Date,
   power:{
-    type: Number, 
+    type: Double, 
     default: 0
   },
   powerDaily: {
-    type: Number, 
+    type: Double, 
     default: 0
   },
   powerMonthly: {
-    type: Number, 
+    type: Double, 
     default: 0
   }
 
