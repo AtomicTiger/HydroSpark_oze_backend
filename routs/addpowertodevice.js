@@ -8,17 +8,11 @@ const app = express();
 // Use the body-parser middleware to parse request bodies
 app.use(bodyParser.json());
 
-main().catch(err => console.log(err));
-
-async function main() {
-  await mongoose.connect(dbstring);
-}
-
 const dev = mongoose.model('Device', Device);
 
 // API endpoint for changing the user ID of a device
 app.post('/devices/:deviceId/power/:power/addpower', async (req, res) => {
-  const powerValue =  parseInt(req.params.power);
+  const powerValue =  parseFloat(req.params.power);
   const deviceId = req.params.deviceId;
 
   try {
