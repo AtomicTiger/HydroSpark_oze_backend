@@ -17,14 +17,31 @@ const dbString = require('./routs/dbdata')
 const app = express();
 const port = 3000;
 
+// app.use(cors());
+
+// app.use(cors({
+//     origin: 'https://hydrospark.onrender.com',
+//     optionsSuccessStatus: 200,
+//     allowedHeaders: 'Content-Type, Authorization'
+// }));
+
+
+// Enable CORS for all routes
 app.use(cors());
 
-app.use(cors({
-    origin: 'https://hydrospark.onrender.com',
-    optionsSuccessStatus: 200,
-    allowedHeaders: 'Content-Type, Authorization'
-}));
+// OR specify allowed origins explicitly
+const allowedOrigins = ['https://hydrospark.onrender.com', '127.0.0.1'];
 
+app.use(cors({
+  origin: function (origin, callback) {
+    // Check if the origin is in the list of allowed origins or allow all origins with "*"
+    if (allowedOrigins.includes(origin) || origin === '*') {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
