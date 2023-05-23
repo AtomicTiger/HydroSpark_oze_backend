@@ -26,11 +26,7 @@ const port = 3000;
 // }));
 
 
-// Enable CORS for all routes
-app.use(cors());
-
-// OR specify allowed origins explicitly
-const allowedOrigins = ['https://hydrospark.onrender.com', '127.0.0.1'];
+const allowedOrigins = ['https://hydrospark.onrender.com', 'http://localhost:3001'];
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -40,7 +36,9 @@ app.use(cors({
     } else {
       callback(new Error('Not allowed by CORS'));
     }
-  }
+  },
+  optionsSuccessStatus: 200,
+  allowedHeaders: 'Content-Type, Authorization'
 }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
