@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 const dev = mongoose.model('Device', Device);
 
 // API endpoint for changing the user ID of a device
-app.post('/devices/:deviceId/power/:power/addpower', async (req, res) => {
+app.post('/devices/:deviceId/power/:power', async (req, res) => {
   const powerValue =  parseFloat(req.params.power);
   const deviceId = req.params.deviceId;
 
