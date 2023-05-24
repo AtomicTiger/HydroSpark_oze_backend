@@ -8,11 +8,11 @@ const dev = mongoose.model('Device', Device);
 
 // Define the API endpoint
 app.get('/devices/:userID/getDevices', async (req, res) => {
-  const userID = req.params.userID;
+  const IdOfUser = req.params.userID;
 
   try {
     // Find all devices with the given userID
-    const devices = await dev.find({ userID });
+    const devices = await dev.find({ userID: IdOfUser });
 
     res.json(devices);
   } catch (error) {
