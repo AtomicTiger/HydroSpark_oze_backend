@@ -26,7 +26,7 @@ const port = 3000;
 // }));
 
 
-const allowedOrigins = ['https://hydrospark.onrender.com', 'http://localhost:3001'];
+const allowedOrigins = ['https://hydrospark.onrender.com', 'http://localhost:3001', 'http://localhost:3000'];
 
 app.use(cors({
   origin: function (origin, callback) {
