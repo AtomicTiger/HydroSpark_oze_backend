@@ -12,7 +12,9 @@ const getDevices = require('./routs/getuserdevices')
 const getdevicesinfo = require('./routs/returndataoutdevices');
 const getUserInfo = require('./routs/getuserdata');
 const cors = require('cors');
-const dbString = require('./routs/dbdata')
+const dbString = require('./routs/dbdata');
+const mobileLogin = require('./routs/mobilelogin');
+const mobileRegister = require('./routs/mobileregister');
 
 const app = express();
 const port = 3000;
@@ -39,6 +41,8 @@ mongoose.connect(dbString, {
         app.use(getDevices);
         app.use(getdevicesinfo);
         app.use(getUserInfo);
+        app.use(mobileLogin);
+        app.use(mobileRegister);
     });
   })
   .catch((error) => {
