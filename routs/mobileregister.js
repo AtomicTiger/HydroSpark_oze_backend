@@ -9,8 +9,8 @@ const userAcc = mongoose.model('User', User);
 app.post('/register/email/:email/password/:pass/reppassword/:reppass', async (req, res) => {
   try {
     let emailVar = req.params.email;
-    let reppasswordVar = req.params.reppassword;
-    let passwordVar = req.params.password;
+    let reppasswordVar = req.params.reppass;
+    let passwordVar = req.params.pass;
 
     console.log(emailVar, reppasswordVar, passwordVar); // Check if passwordVar has a value
 
