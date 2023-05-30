@@ -7,7 +7,7 @@ const app = express();
 
 const userAcc = mongoose.model('User', User);
 
-app.post('/mobileLogin/email/:email/password/:pass/', async (req, res) => {
+app.post('/mobileLogin/email/:email/password/:password/', async (req, res) => {
     try {
       const { email, password } = req.params;
       
