@@ -28,7 +28,7 @@ app.post('/devices/:deviceId/power/:power', async (req, res) => {
         return res.status(404).json({ error: 'Device not found' });
       }
   
-      res.json(device);
+      res.status(200).json(device);
     } catch (err) {
       console.error('Failed to update device power:', err);
       res.status(500).json({ error: 'Failed to update device power' });
